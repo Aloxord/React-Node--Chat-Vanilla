@@ -1,0 +1,130 @@
+*{
+  /* outline: 1px solid red; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,body{
+  width: 100%;
+  height: fill-available;
+  height: -webkit-fill-available;
+  height: -moz-fill-available;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.chat{
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: 1fr 5fr;
+}
+
+.chat__title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #C4DFDF;
+  color: white;
+  text-shadow: 0px 0px 3px grey;
+}
+
+.chat__room{
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 90% auto;
+
+  background: linear-gradient(180deg, rgba(196,223,223,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+.chat__show{
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat__gradient__border{
+  width: 95%;
+  height: 95%;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(196,223,223,1) 100%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .4rem;
+}
+
+.chat__messages{
+  width: 99%;
+  height: 99%;
+  background-color: #F8F6F4;
+}
+
+.chat__people{
+  background-color: transparent;
+}
+
+.chat__send{
+  display: flex;
+  justify-content: center;
+}
+
+.chat__button{
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #27374D;
+  line-height: 0;
+  color: white;
+}
+
+.chat__input{
+ background-color: #E3F4F4;
+ border: .4rem solid #C4DFDF;
+ padding-left: 1rem;
+ font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .chat{
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+  }
+
+  .chat__title{
+    font-size: .5rem;
+  }
+
+  .chat__room{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 80% repeat(2, 10%);
+  
+    background: linear-gradient(180deg, rgba(210,233,233,1) 0%, rgba(255,255,255,1) 100%);
+  }
+
+  .chat__show,
+  .chat__send,
+  .chat__input{
+    grid-column: span 2;
+  }
+
+  .chat__people{
+    display: none;
+  }
+}
