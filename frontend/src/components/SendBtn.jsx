@@ -5,6 +5,9 @@ function Send({message,user,setMessage, setSent}){
 
   const handleClick = e =>{
     e.preventDefault();
+    if(message.length === 0){
+        return;
+    }
     post("/message",{
       message,
       id:user.id

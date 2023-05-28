@@ -9,6 +9,9 @@ function InputText({user,message,setMessage,setSent}){
 
     const handleKeyDown = e =>{
         if (e.key === 'Enter'){
+            if(message.length === 0){
+                return;
+            }
             post("/message",{
                 message,
                 id:user.id
