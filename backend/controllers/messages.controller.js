@@ -1,9 +1,10 @@
-const { okResponse } = require("../utils.js");
-const { getMessagesByUserId, getAllMessages } = require("../services/messages.service.js");
+const { okResponse, getReqData } = require("../utils.js");
+const { getMessagesByUserId, getAllMessages, createNewMessage } = require("../services/messages.service.js");
 
-module.exports = (req,res)=>{
+module.exports = async (req,res)=>{
     const { method, url } = req;
     const [ , , id ] = url.split("/");
+
     if(method == "GET"){
       if(parseInt(id) ){
         getMessagesByUserId(id, data =>{
@@ -16,7 +17,14 @@ module.exports = (req,res)=>{
       }
     }
     if(method == "POST"){
-        okResponse(res,{message:"oki"})
+        getReqData(req)
+          .then(data=>{
+            const { message,id } = data;
+            createNewMessage(id,message,(data)=>{
+              okResponse(res,{message:"oki"})
+            });
+          });
+        
 
     }
 }

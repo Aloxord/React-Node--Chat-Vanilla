@@ -23,7 +23,9 @@ const getAllMessages = (responseFn) => {
     db.serialize(()=>{
     
         db.all(`
-            SELECT * FROM message 
+            SELECT * FROM message m
+            INNER JOIN user u
+            ON u.id = m.user_id 
             `, (err, row) => {
             if (err){
               throw err;

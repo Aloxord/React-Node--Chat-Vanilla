@@ -3,25 +3,28 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transform: all 1s ease;
+  /* transition: all 1s ease; */
 }
 
 html,body{
   width: 100%;
-  height: fill-available;
-  height: -webkit-fill-available;
-  height: -moz-fill-available;
+  height: 100%;
+  overflow: hidden;
 }
 
 body{
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  height: 100vh;
+  background: #7F7FD5;
+  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+  color: #77aee8;
 }
 
 #root {
   max-width: 1280px;
-  width: 100%;
+  width: 110000%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -30,8 +33,8 @@ body{
 .chat{
   display: grid;
   width: 100%;
-  height: 100%;
-  grid-template-rows: 1fr 5fr;
+  height: 100vh;
+  grid-template-rows: 15% 85%;
 }
 
 .chat__title{
@@ -39,17 +42,30 @@ body{
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #C4DFDF;
+  background-color: rgba(0,0,0,.4);
   color: white;
   text-shadow: 0px 0px 3px grey;
+  width: 80%;
+  height: 90%;
+  justify-self: center;
+  align-self: center;
+  border-radius: 5rem;
+  font-size: .6rem;
+  overflow-wrap: break-word;
+  padding:1rem;
 }
 
 .chat__room{
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 80% 20%;
   grid-template-rows: 90% auto;
-
-  background: linear-gradient(180deg, rgba(196,223,223,1) 0%, rgba(255,255,255,1) 100%);
+  border-radius: 3rem;
+  padding: 2rem;
+  background: rgba(0,0,0,.2);
+  margin: 1rem;
+  width: 80%;
+  height: 95%;
+  justify-self: center;
 }
 
 .chat__show{
@@ -57,27 +73,59 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.chat__gradient__border{
-  width: 95%;
-  height: 95%;
-  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(196,223,223,1) 100%);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: .4rem;
+  width: 100%;
+  height: 94%;
+  align-self: flex-start;
 }
 
 .chat__messages{
   width: 99%;
   height: 99%;
-  background-color: #F8F6F4;
+  background: rgba(0,0,0,.1);
+  border-radius: 2rem;
+  display: flex;
+  flex-flow: column;
+  overflow: auto;
+}
+
+.chat__message{
+  max-width: 50%;
+  width: 50%;
+  margin: .5rem;
+  padding: .6rem;
+  background: rgba(0,0,0,.1);
+  border-radius: 2rem;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  justify-content: center;
+  align-items: center;
 }
 
 .chat__people{
-  background-color: transparent;
+  border-radius: 2rem;
+  margin-left: 1rem;
+  height: 94%;
+  background-color: rgba(0,0,0,.2);
+  align-self: flex-start;
+  overflow: auto;
+}
+
+.chat__tab{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+}
+
+.chat__color{
+  border-radius: .5rem;
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  margin-right: .5rem;
+  border: 1px solid grey;
 }
 
 .chat__send{
@@ -86,46 +134,77 @@ body{
 }
 
 .chat__button{
-  border-radius: 0;
+  border-radius: 0 2rem 2rem 0;
   width: 100%;
   height: 100%;
-  background-color: #27374D;
+  background-color: rgba(0,0,0,.4);;
   line-height: 0;
   color: white;
 }
 
+.chat__button:hover,
+.chat__button:focus,
+.chat__button:active,
+.chat__button:left{
+  outline: none;
+  border: none;
+  box-shadow: none;
+
+ }
+
 .chat__input{
- background-color: #E3F4F4;
- border: .4rem solid #C4DFDF;
+  background-color: rgba(0,0,0,.4);
+  border: none;
+  border-radius: 2rem 0 0 2rem;
  padding-left: 1rem;
- font-size: 1.5rem;
+ font-size: 1.3rem;
+ color: #77aee8;
+ width: 100%;
+
 }
+
+.chat__input::placeholder{
+ color: #bad7f6;
+}
+
+.chat__input:focus{
+  border: none;
+  outline: none;
+  box-shadow: none;
+ }
 
 @media screen and (max-width: 768px) {
   .chat{
     display: grid;
     grid-template-rows: 1fr 6fr;
+    width: 100vw;
   }
 
   .chat__title{
-    font-size: .5rem;
+    font-size: .4rem;
+    height: 70%;
   }
 
   .chat__room{
     display: grid;
     grid-template-columns: 4fr 1fr;
-    grid-template-rows: 80% repeat(2, 10%);
-  
-    background: linear-gradient(180deg, rgba(210,233,233,1) 0%, rgba(255,255,255,1) 100%);
+    grid-template-rows: 80% 15%;
+    row-gap: 1rem;
+    margin: 1rem 0 0 0;
+    width: 90%;
+    height: 80%;
+    align-self: baseline;
   }
 
-  .chat__show,
-  .chat__send,
-  .chat__input{
+  .chat__show{
     grid-column: span 2;
   }
 
   .chat__people{
     display: none;
   }
+
+  .chat__input::placeholder{
+    font-size: 1rem;
+   }
 }
