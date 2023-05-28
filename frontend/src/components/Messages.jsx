@@ -6,7 +6,7 @@ function Messages({currentUser,messages}){
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    messagesEndRef.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function Messages({currentUser,messages}){
   return (
       <div className='chat__show'>
 
-        <div className="chat__messages">
+        <div ref={messagesEndRef} className="chat__messages">
           {messages.map(item=>{
               const {id,color, text} = item;
               return (
@@ -26,7 +26,6 @@ function Messages({currentUser,messages}){
                   </div>
               );
           })}
-          <div ref={messagesEndRef} />
         </div>
       </div>
   );

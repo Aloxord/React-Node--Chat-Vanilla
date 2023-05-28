@@ -56,6 +56,15 @@ const deleteUser = async (id,responseFn) => {
             throw err;
           }
             responseFn({message:`User ${id} deleted due inactivity`});
+        })
+        .run(`
+          DELETE FROM message WHERE user_id=?
+          `,[id],
+          function(err){
+          if (err){
+            throw err;
+          }
+            responseFn({message:`User ${id} messages deleted due inactivity`});
         });
   });
 }

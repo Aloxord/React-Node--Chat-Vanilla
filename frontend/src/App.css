@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* transition: all 1s ease; */
+  transition: all 1s ease;
 }
 
 html,body{
@@ -15,7 +15,7 @@ html,body{
 body{
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   background: #7F7FD5;
   background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
   background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
@@ -24,7 +24,7 @@ body{
 
 #root {
   max-width: 1280px;
-  width: 110000%;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@ body{
 .chat{
   display: grid;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   grid-template-rows: 15% 85%;
 }
 
@@ -89,7 +89,6 @@ body{
 }
 
 .chat__message{
-  max-width: 50%;
   width: 50%;
   margin: .5rem;
   padding: .6rem;
@@ -175,9 +174,7 @@ body{
 
 @media screen and (max-width: 768px) {
   .chat{
-    display: grid;
-    grid-template-rows: 1fr 6fr;
-    width: 100vw;
+    grid-template-rows: 13% 87% ;
   }
 
   .chat__title{
@@ -192,8 +189,13 @@ body{
     row-gap: 1rem;
     margin: 1rem 0 0 0;
     width: 90%;
-    height: 80%;
+    height: 90%;
     align-self: baseline;
+  }
+
+  .chat__message{
+    width: 70%;
+    grid-template-columns: 15% 85%;
   }
 
   .chat__show{
